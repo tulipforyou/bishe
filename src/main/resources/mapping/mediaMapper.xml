@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+		"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	<mapper namespace="com.sch.dao.mediaDao">
+	<!-- 通过id查询用户信息 -->
+	<select id="selectByName" parameterType="String" resultType="com.sch.model.media">
+		select *
+		from  media
+		where name = #{name}	
+	</select>
+	<!-- 添加用户 -->
+	<insert id="insertMedia" parameterType="com.sch.model.media">
+		insert into media(title,name,src,picture,descript,uptime) values (#{title},#{name},#{src},#{picture},#{descript},#{uptime})
+	</insert>
+	<select id="selectByTitle" parameterType="String" resultType="com.sch.model.media">
+		select *
+		from  media
+		where title = #{title}
+	</select>
+	</mapper>
