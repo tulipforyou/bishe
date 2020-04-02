@@ -82,7 +82,6 @@
 </div>
 
 
-
 <!-- model -->
 <div class="modal fade" id="mymodal" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true"
      data-backdrop='static'>
