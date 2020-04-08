@@ -1,0 +1,190 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: sch
+  Date: 2020/4/8
+  Time: 上午9:24
+  To change this template use File | Settings | File Templates.
+--%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" isELIgnored="false" %>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="baseUri" value="${pageContext.request.contextPath }" scope="request"/>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
+    <title>認知診斷</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
+    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
+    <!--[if lt IE 9]>
+
+    <![endif]-->
+
+    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
+
+    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
+    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+</head>
+<body>
+
+
+<div class="header">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+        <img src="images/logo.png" alt="logo" style="width: 200px ;height: 40px">
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav mr-auto" id="navbarSupportedContent">
+                <style type="text/css">
+                    .nav-a {
+                        float: left;
+                        text-align: center;
+                        font: 26px/2.5 "microsoft yahei";
+                        color: #545b62;
+                        margin: 7px;
+                    }
+                </style>
+                <li class="nav-item">
+                    <a href="index" class="nav-a">首页</a>
+                </li>
+                <li class="nav-item">
+                    <a href="http://www.takenedu.net/news.php" class="nav-a" target="_blank">学习快讯</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/playMedia" class="nav-a">教学视频</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/news1" class="nav-a">课程介绍</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/news2" class="nav-a">课程内容</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/news3" class="nav-a">课程实践</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/news4" class="nav-a">教学团队</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">智能分析</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">课程图谱</a>
+                </li>
+                <li class="nav-item">
+                    <a href="${pageContext.request.contextPath}/contactUs.jsp" class="nav-a">联系我们</a>
+                </li>
+                <c:if test="${not empty hasLogin && userType=='2'}">
+                    <a href="study.jsp" class="nav-a">我的(学生)</a>
+                </c:if>
+                <c:if test="${not empty hasLogin && userType=='1'}">
+                    <a href="teacher.jsp" class="nav-a">我的(老师)</a>
+                </c:if>
+                <c:if test="${empty hasLogin}">
+                    <li class="nav-item">
+                        <button class="btn btn-link" type="button" data-toggle="modal"
+                                data-target="#mymodal">登录</button>
+                        <span>/</span>
+                        <button class="btn btn-link" type="button" id="enroll">注册</button>
+                    </li>
+                </c:if>
+                <c:if test="${not empty hasLogin}">
+                    <li class="nav-item">
+                        <span>欢迎您：${hasLogin}</span>
+                        <a href="quit">退出</a>
+                    </li>
+                </c:if>
+            </ul>
+        </div>
+    </nav>
+</div>
+
+<div class="container-fluid" style="background-color: #20c997">
+    <div class="row">
+        <div class="col">
+        </div>
+        <div class="col-6">
+            <h1 style="text-align: center">知識點掌握概況</h1>
+        </div>
+        <div class="col">
+            <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">
+                <input type="file" class="btn btn-outline-success" name="upload">
+                <input type="submit" class="btn btn-outline-primary" value="成績分析"/>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+<c:if test="${empty resultMap}">
+    <div class="container-fluid" style="background-color: #9fcdff">
+        <div class="row">
+            <div class="col align-items-start">
+                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col align-items-center" style="text-align: center">
+                <img src="images/dd.jpg" style="width: 1100px;height: 200px;" alt="sch">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col align-items-end">
+                <br/><br/><br/><br/><br/><br/><br/><br/>
+                <br/><br/><br/><br/><br/><br/>
+            </div>
+        </div>
+    </div>
+
+</c:if>
+<c:if test="${!empty resultMap}">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <table class="table table-hover">
+                    <thead>
+                    <tr>
+                        <th scope="col">學生姓名</th>
+                        <th scope="col">知識點1</th>
+                        <th scope="col">知識點2</th>
+                        <th scope="col">知識點3</th>
+                        <th scope="col">知識點4</th>
+                        <th scope="col">知識點5</th>
+                        <th scope="col">知識點6</th>
+                        <th scope="col">知識點7</th>
+                        <th scope="col">知識點8</th>
+                        <th scope="col">知識點9</th>
+                    </tr>
+                    </thead>
+
+                    <tbody>
+                    <c:forEach items="${resultMap}" var="map">
+                        <tr>
+                            <th scope="row">學生_${map.key}</th>
+                            <c:forEach items="${map.value}" var="list">
+                                <c:choose>
+                                    <c:when test="${list eq '1'}">
+                                        <th scope="row" style="background-color: #34ce57;text-align: center">${list}</th>
+                                    </c:when>
+                                    <c:otherwise>
+                                        <th scope="row" style="background-color: #b21f2d;text-align: center">${list}</th>
+                                    </c:otherwise>
+                                </c:choose>
+                            </c:forEach>
+                        </tr>
+                    </c:forEach>
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</c:if>
+
+</body>
+</html>
