@@ -61,8 +61,7 @@
 <body>
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
-
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index">智能习题推荐</a>
     <a href="index" class="form-control form-control-dark w-100">首页</a>
 
     <a href="http://www.takenedu.net/news.php"  class="form-control form-control-dark w-100" target="_blank">学习快讯</a>

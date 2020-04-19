@@ -58,7 +58,7 @@
 <body>
 
 <nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
-    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+    <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="index">智能习题推荐</a>
 
     <a href="index" class="form-control form-control-dark w-100">首页</a>
 
@@ -256,13 +256,13 @@
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
                                 <li class="nav-item">
-                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">知識點掌握概況</a>
+                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">知识点掌握情况</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="yhc1.jsp" style="color: #062c33">正確率預測</a>
+                                    <a class="nav-link" href="yhc1.jsp" style="color: #062c33">正确率预测</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link active" href="yhc2.jsp" style="color: #062c33">相關習題推送</a>
+                                    <a class="nav-link active" href="yhc2.jsp" style="color: #062c33">相关习题推送</a>
                                 </li>
                             </ul>
                         </div>
@@ -273,7 +273,7 @@
                     <div class="row">
                         <div class="col-md-12">
 
-                            <h1>相關習題推送</h1>
+                            <h1>相关习题推送</h1>
 
                         </div>
                     </div>
