@@ -248,22 +248,26 @@
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                     <h1 class="h2">认知诊断</h1>
+                    <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">
+                        <input type="file" class="btn btn-outline-success" name="upload">
+                        <input type="submit" class="btn btn-outline-primary" value="成績分析"/>
+                    </form>
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col">
-                        </div>
-                        <div class="col-6">
-                            <h1 style="text-align: center">知识点掌握概况</h1>
-                        </div>
-                        <div class="col">
-                            <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">
-                                <input type="file" class="btn btn-outline-success" name="upload">
-                                <input type="submit" class="btn btn-outline-primary" value="成績分析"/>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<%--                <div class="container-fluid">--%>
+<%--                    <div class="row">--%>
+<%--                        <div class="col">--%>
+<%--                        </div>--%>
+<%--                        <div class="col-6">--%>
+<%--                            <h1 style="text-align: center">知识点掌握概况</h1>--%>
+<%--                        </div>--%>
+<%--                        <div class="col">--%>
+<%--                            <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">--%>
+<%--                                <input type="file" class="btn btn-outline-success" name="upload">--%>
+<%--                                <input type="submit" class="btn btn-outline-primary" value="成績分析"/>--%>
+<%--                            </form>--%>
+<%--                        </div>--%>
+<%--                    </div>--%>
+<%--                </div>--%>
 
 
 
