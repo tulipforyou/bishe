@@ -1,129 +1,284 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<script src="./js/jquery.min.js"></script>
-<script src="./js/ajaxfileupload.js"></script>
-<script src="./js/media.js"></script>
-<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/enroll_.css">
+    <meta charset="UTF-8">
+    <title>媒体上传</title>
+    <script src="./js/jquery.min.js"></script>
+    <script src="./js/ajaxfileupload.js"></script>
+    <script src="./js/media.js"></script>
+<!--    <link rel="stylesheet" href="css/enroll_.css">-->
+
+    <link href="bs4/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+    <!-- Favicons -->
+    <meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
+    <meta name="theme-color" content="#563d7c">
+
+
+    <style type="text/css">
+        .bd-placeholder-img {
+            font-size: 1.125rem;
+            text-anchor: middle;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        @media (min-width: 768px) {
+            .bd-placeholder-img-lg {
+                font-size: 3.5rem;
+            }
+        }
+    </style>
+    <!-- Custom styles for this template -->
+    <link href="bs4/css/dashboard.css" rel="stylesheet">
 
 </head>
 <body>
-<div class="header">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
-		<img src="images/logo.png" alt="logo" style="width: 200px ;height: 40px">
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto" id="navbarSupportedContent">
-				<style type="text/css">
-					.nav-a {
-						float: left;
-						text-align: center;
-						font: 26px/2.5 "microsoft yahei";
-						color: #545b62;
-						margin: 7px;
-					}
-				</style>
-				<li class="nav-item">
-					<a href="index" class="nav-a">首页</a>
-				</li>
-				<li class="nav-item">
-					<a href="http://www.takenedu.net/news.php" class="nav-a" target="_blank">学习快讯</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/playMedia" class="nav-a">教学视频</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news1" class="nav-a">课程介绍</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news2" class="nav-a">课程内容</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news3" class="nav-a">课程实践</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news4" class="nav-a">教学团队</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">智能分析</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">课程图谱</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/contactUs.jsp" class="nav-a">联系我们</a>
-				</li>
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+
+	<a href="index" class="form-control form-control-dark w-100">首页</a>
+
+	<a href="http://www.takenedu.net/news.php"  class="form-control form-control-dark w-100" target="_blank">学习快讯</a>
+
+	<a href="${pageContext.request.contextPath}/playMedia"  class="form-control form-control-dark w-100">教学视频</a>
+
+	<a href="${pageContext.request.contextPath}/news1"  class="form-control form-control-dark w-100">课程介绍</a>
+
+	<a href="${pageContext.request.contextPath}/news2"  class="form-control form-control-dark w-100">课程内容</a>
+
+	<a href="${pageContext.request.contextPath}/news3"  class="form-control form-control-dark w-100">课程实践</a>
+
+	<a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
+
+	<a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
+
+	<a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
+
+	<a href="${pageContext.request.contextPath}/contactUs.jsp"  class="form-control form-control-dark w-100">联系我们</a>
+
+</nav>
+<br/><br/>
+
+<div class="container-fluid">
+	<div class="row">
+		<nav class="col-md-2 d-none d-md-block bg-light sidebar">
+			<div class="sidebar-sticky">
+				<ul class="nav flex-column">
+					<li class="nav-item">
+						<a class="nav-link" href="grade1">
+							<span data-feather="home"></span>
+							选课管理 <span class="sr-only">(current)</span>
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="grade2">
+							<span data-feather="file"></span>
+							成绩导入
+						</a>
+					</li>
+<!--					<li class="nav-item">-->
+<!--						<a class="nav-link" href="grade3">-->
+<!--							<span data-feather="shopping-cart"></span>-->
+<!--							成绩分析-->
+<!--						</a>-->
+<!--					</li>-->
+<!--					<li class="nav-item">-->
+<!--						<a class="nav-link" href="grade4">-->
+<!--							<span data-feather="users"></span>-->
+<!--							成绩预警-->
+<!--						</a>-->
+<!--					</li>-->
+					<li class="nav-item">
+						<a class="nav-link active" href="addMedia.html">
+							<span data-feather="bar-chart-2"></span>
+							课程上传
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="teacherUploadExercise.jsp">
+							<span data-feather="layers"></span>
+							习题上传
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="playMedia">
+							<span data-feather="layers"></span>
+							查看课程视频
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="managerExercise">
+							<span data-feather="layers"></span>
+							管理习题
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="lookStudentAnswers">
+							<span data-feather="layers"></span>
+							学生已做习题查看
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="showNews">
+							<span data-feather="layers"></span>
+							校內快訊
+						</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link" href="addNews.jsp">
+							<span data-feather="layers"></span>
+							信息管理
+						</a>
+					</li>
 				</ul>
-				<span>
-					<form action="index.action">
-						<button type="submit" class="btn btn-default" id="submit0">返回首页</button>
-					</form>
-				</span>
 			</div>
 		</nav>
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+				<h1 class="h2">媒体上传</h1>
+			</div>
+			<p class="h1">课程上传！</p>
+
+			<!--<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default">标题：</span>
+				</div>
+				<input type="text" name="title" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text">视频：</span>
+				</div>
+				<div class="custom-file">
+					<input id="media" type="file" name="files">
+					<label class="custom-file-label" for="media">选择文件</label>
+				</div>
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroupFileAddon02">封面：</span>
+				</div>
+				<div class="custom-file">
+					<input id="picture" type="file" name="files" class="custom-file-input" aria-describedby="inputGroupFileAddon02">
+					<label class="custom-file-label" for="picture"></label>
+				</div>
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default1"> 详情介绍：</span>
+				</div>
+				<input type="text" name="descript" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default1">
+			</div>
+
+			<div class="input-group mb-3">
+				<div class="input-group-prepend">
+					<span class="input-group-text" id="inputGroup-sizing-default2"> 上传时间：</span>
+				</div>
+				<input type="text" name="uptime" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-default2">
+			</div>-->
+
+
+
+			<div class="form-group row">
+				<label class="col-sm-4" style="text-align:right;"> 标题：</label>
+				<div class="col-sm-8">
+					<input type="text" name="title" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4" style="text-align:right;"> 视频：</label>
+				<div class="col-sm-8">
+					<input id="media" type="file" name="files" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4" style="text-align:right;"> 封面：</label>
+				<div class="col-sm-8">
+					<input id="picture" type="file" name="files" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4" style="text-align:right;"> 详情介绍：</label>
+				<div class="col-sm-8">
+					<input type="text" name="descript" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<label class="col-sm-4" style="text-align:right;"> 上传时间：</label>
+				<div class="col-sm-8">
+					<input type="text" name="uptime" class="form-control"/>
+				</div>
+			</div>
+			<div class="form-group row">
+				<button type="button" class="btn btn-secondary btn-lg btn-block" id="sure">上传</button>
+			</div>
+			<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+		</main>
 	</div>
-	<div class="containt">
-		<p class="h1">课程上传！</p>
-	    
-	    <div class="form-group row">
-	    	<label class="col-sm-4" style="text-align:right;"> 标题：</label>
-	    	<div class="col-sm-8">
-	    		<input type="text" name="title"/>
-	    	</div>
-	    </div>
-	     <div class="form-group row">
-	    	<label class="col-sm-4" style="text-align:right;"> 视频：</label>
-	    	<div class="col-sm-8">
-	    		<input id="media" type="file" name="files"/>
-	    	</div>
-	    </div>
-	     <div class="form-group row">
-	    	<label class="col-sm-4" style="text-align:right;">   封面：</label>
-	    	<div class="col-sm-8">
-	    		<input id="picture" type="file" name="files" />
-	    	</div>
-	    </div>
-	     <div class="form-group row">
-	    	<label class="col-sm-4" style="text-align:right;"> 详情介绍：</label>
-	    	<div class="col-sm-8">
-	    		<input type="text" name="descript"/>
-	    	</div>
-	    </div>
-	     <div class="form-group row">
-	    	<label class="col-sm-4" style="text-align:right;"> 上传时间：</label>
-	    	<div class="col-sm-8">
-	    		 <input type="text" name="uptime"/>
-	    	</div>
-	    </div>
-	     <div class="form-group row">
-	    	<button type="button" class="btn btn-outline-dark btn-block" id="sure">上传</button>
-	    </div>
-	      
-<!--         标题： -->
-<!--          <input type="text" name="title"/> -->
-<!--               视频： -->
-<!--         <span style='color:blue;'>(支持'3gp','rmvb','flv','wmv','avi','mkv','mp4','mp3','wav'格式)</span> -->
-<!-- 	    <input id="media" type="file" name="files"/> -->
-<!-- 		    封面： -->
-<!-- 		<input id="picture" type="file" name="files" /> -->
-<!-- 		    详情介绍： -->
-<!-- 		     <input type="text" name="descript"/> -->
-<!-- 		    上传时间： -->
-<!-- 		     <input type="text" name="uptime"/> -->
-	    
-<!-- 	    <button type="button" id="sure">上传</button> -->
-	   
-    
-	</div>
+</div>
+
+<!--<div class="containt">
+    <p class="h1">课程上传！</p>
+
+    <div class="form-group row">
+        <label class="col-sm-4" style="text-align:right;"> 标题：</label>
+        <div class="col-sm-8">
+            <input type="text" name="title"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4" style="text-align:right;"> 视频：</label>
+        <div class="col-sm-8">
+            <input id="media" type="file" name="files"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4" style="text-align:right;"> 封面：</label>
+        <div class="col-sm-8">
+            <input id="picture" type="file" name="files"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4" style="text-align:right;"> 详情介绍：</label>
+        <div class="col-sm-8">
+            <input type="text" name="descript"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label class="col-sm-4" style="text-align:right;"> 上传时间：</label>
+        <div class="col-sm-8">
+            <input type="text" name="uptime"/>
+        </div>
+    </div>
+    <div class="form-group row">
+        <button type="button" class="btn btn-outline-dark btn-block" id="sure">上传</button>
+    </div>
+
+    &lt;!&ndash;         标题： &ndash;&gt;
+    &lt;!&ndash;          <input type="text" name="title"/> &ndash;&gt;
+    &lt;!&ndash;               视频： &ndash;&gt;
+    &lt;!&ndash;         <span style='color:blue;'>(支持'3gp','rmvb','flv','wmv','avi','mkv','mp4','mp3','wav'格式)</span> &ndash;&gt;
+    &lt;!&ndash; 	    <input id="media" type="file" name="files"/> &ndash;&gt;
+    &lt;!&ndash; 		    封面： &ndash;&gt;
+    &lt;!&ndash; 		<input id="picture" type="file" name="files" /> &ndash;&gt;
+    &lt;!&ndash; 		    详情介绍： &ndash;&gt;
+    &lt;!&ndash; 		     <input type="text" name="descript"/> &ndash;&gt;
+    &lt;!&ndash; 		    上传时间： &ndash;&gt;
+    &lt;!&ndash; 		     <input type="text" name="uptime"/> &ndash;&gt;
+
+    &lt;!&ndash; 	    <button type="button" id="sure">上传</button> &ndash;&gt;
 
 
+</div>-->
 
-	
-    
-    
-  
 
 </body>
 </html>

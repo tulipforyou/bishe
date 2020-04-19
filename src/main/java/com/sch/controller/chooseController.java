@@ -198,7 +198,7 @@ public class chooseController {
 		ModelAndView mv = null;
 
 		HttpSession session=req.getSession(false);
-		ArrayList<choose> myteach=new ArrayList<choose> ();
+		ArrayList<choose> myteach;
 		ArrayList<choose> myteach1=new ArrayList<choose> ();
 		if(session!=null){
 			String str=session.getAttribute("uno").toString();
@@ -206,8 +206,14 @@ public class chooseController {
 			if(str!=null){
 				int uno=Integer.parseUnsignedInt(str);
 
+				System.out.println("Grade3的uno= "+uno);
+
 				course c=cs.queryByUno(uno);
+				System.out.println("Grade3的course= "+c);
+
 				myteach=csi.queryByCno(c.getCno());
+				System.out.println("Grade3的myteach= "+myteach);
+
 				for(int i=0;i<myteach.size();i++){
 					int temp= Grade.get(i).getGrade1()+Grade.get(i).getGrade2()+Grade.get(i).getGrade3();
 					csi.updateChoose_teacher(myteach.get(i).getNo(), temp);
@@ -216,6 +222,9 @@ public class chooseController {
 
 			}
 		}
+
+		System.out.println("***********************"+myteach1);
+		System.out.println("***********************"+Grade);
 
 		mv = new ModelAndView("grade3");
 		mv.addObject("data", myteach1);

@@ -29,12 +29,7 @@ public class courseController {
 		try {
 			mv = new ModelAndView("course");
 			ArrayList<course> course=cs.queryAll();
-			
 			mv.addObject("data", course);
-			
-			
-			
-			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

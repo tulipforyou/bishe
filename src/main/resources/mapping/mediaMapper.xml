@@ -17,4 +17,7 @@
 		from  media
 		where title = #{title}
 	</select>
-	</mapper>
+    <select id="findAllTitles" resultType="com.sch.model.media">
+		select * from media;
+	</select>
+</mapper>

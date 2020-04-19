@@ -5,6 +5,9 @@ import org.springframework.stereotype.Service;
 
 import com.sch.dao.mediaDao;
 import com.sch.model.media;
+
+import java.util.List;
+
 @Service
 public class mediaServiceImpl implements mediaService{
 	@Autowired
@@ -23,7 +26,13 @@ public class mediaServiceImpl implements mediaService{
 	}
 
 
+	@Override
 	public media selectByTitle(String mediaName) {
 		return dao.selectByTitle(mediaName);
+	}
+
+	@Override
+	public List<media> findAllTitles() {
+		return dao.findAllTitles();
 	}
 }

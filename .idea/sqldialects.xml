@@ -3,5 +3,6 @@
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/sql/sql.sql" dialect="MySQL" />
     <file url="file://$PROJECT_DIR$/src/main/resources/mapping/chooseMapper.xml" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/src/main/resources/mapping/mediaMapper.xml" dialect="GenericSQL" />
   </component>
 </project>

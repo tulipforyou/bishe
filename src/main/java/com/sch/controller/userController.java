@@ -22,6 +22,9 @@ import org.springframework.web.multipart.MultipartFile;
 import sun.security.x509.GeneralName;
 
 
+/**
+ * @author sch
+ */
 @Controller
 @SessionAttributes(value = {"hasLogin","userType","userId"})
 public class userController {
@@ -87,7 +90,7 @@ public class userController {
 	@RequestMapping("/quit")
 	public String quit(SessionStatus sessionStatus){
 		sessionStatus.setComplete();
-		return "index";
+		return "redirect:/index";
 	}
 
 

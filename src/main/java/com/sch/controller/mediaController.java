@@ -134,12 +134,16 @@ public class mediaController {
 	@RequestMapping(path = "/findMediaByName")
 	public ModelAndView findMediaByName(HttpServletRequest req, String mediaName) {
 		media media = ms.selectByTitle(mediaName);
+		System.out.println("******************"+media);
 		return showcourse(req, media);
 	}
 
 	@RequestMapping("/playMedia")
-	public String re() {
-		return "findMediaByName";
+	public ModelAndView re() {
+		ModelAndView mav=new ModelAndView( "findMediaByName");
+		List<media> allTitles=ms.findAllTitles();
+		mav.addObject("allTitles",allTitles);
+		return mav;
 	}
 
 	public ModelAndView showcourse(HttpServletRequest req, media media) {

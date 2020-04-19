@@ -8,7 +8,20 @@ public class media {
 	private String picture;
 	private String descript;
 	private String uptime;
-	
+
+	@Override
+	public String toString() {
+		return "media{" +
+				"id=" + id +
+				", title='" + title + '\'' +
+				", name='" + name + '\'' +
+				", src='" + src + '\'' +
+				", picture='" + picture + '\'' +
+				", descript='" + descript + '\'' +
+				", uptime='" + uptime + '\'' +
+				'}';
+	}
+
 	public media() {
 		super();
 	}

@@ -209,6 +209,18 @@ public class newsController {
 		newsUtil nu=new newsUtil();
 		Date date=nu.strToDate(request.getParameter("date"));
 		String type=request.getParameter("type");
+		if("1".equals(type)){
+			type="课程介绍";
+		}
+		if("2".equals(type)){
+			type="课程内容";
+		}
+		if("3".equals(type)){
+			type="课程实践";
+		}
+		if("4".equals(type)){
+			type="教学团队";
+		}
 		ni=new news(head,summary,body,date,newFileName,type);
 		ni.setImg(newFileName);
 		ss.addNews(ni);
@@ -241,7 +253,7 @@ public class newsController {
 		String filePath = request.getSession().getServletContext().getRealPath("/upload");; //定义图片上传后的路径
 		String newFileName = fileOperate(file,filePath);
 		ni.setImg(newFileName);
-		int id=Integer.valueOf(request.getParameter("id"));
+		int id=Integer.parseInt(request.getParameter("id"));
 		ni.setId(id);
 		ss.updateNews(ni);
 		System.out.println(filePath);

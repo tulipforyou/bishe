@@ -3,64 +3,139 @@
 <head>
 	<meta charset="UTF-8">
 	<title>注册</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
-	<link rel="stylesheet" href="css/enroll_.css">
+	<link rel="canonical" href="https://v4.bootcss.com/docs/examples/dashboard/">
+
+	<!-- Bootstrap core CSS -->
+	<link href="bs4/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+	<!-- Favicons -->
+	<meta name="msapplication-config" content="/docs/assets/img/favicons/browserconfig.xml">
+	<meta name="theme-color" content="#563d7c">
+
+
+	<style type="text/css">
+		.bd-placeholder-img {
+			font-size: 1.125rem;
+			text-anchor: middle;
+			-webkit-user-select: none;
+			-moz-user-select: none;
+			-ms-user-select: none;
+			user-select: none;
+		}
+
+		@media (min-width: 768px) {
+			.bd-placeholder-img-lg {
+				font-size: 3.5rem;
+			}
+		}
+	</style>
+	<!-- Custom styles for this template -->
+	<link href="bs4/css/dashboard.css" rel="stylesheet">
 </head>
 <body>
-<div class="header">
-	<nav class="navbar navbar-expand-lg navbar-light bg-light ">
-		<img src="images/logo.png" alt="logo" style="width: 200px ;height: 40px">
-		<div class="collapse navbar-collapse">
-			<ul class="navbar-nav mr-auto" id="navbarSupportedContent">
-				<style type="text/css">
-					.nav-a {
-						float: left;
-						text-align: center;
-						font: 26px/2.5 "microsoft yahei";
-						color: #545b62;
-						margin: 7px;
-					}
-				</style>
-				<li class="nav-item">
-					<a href="index" class="nav-a">首页</a>
-				</li>
-				<li class="nav-item">
-					<a href="http://www.takenedu.net/news.php" class="nav-a" target="_blank">学习快讯</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/playMedia" class="nav-a">教学视频</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news1" class="nav-a">课程介绍</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news2" class="nav-a">课程内容</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news3" class="nav-a">课程实践</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/news4" class="nav-a">教学团队</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">智能分析</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/intelligentAnalysis" class="nav-a">课程图谱</a>
-				</li>
-				<li class="nav-item">
-					<a href="${pageContext.request.contextPath}/contactUs.jsp" class="nav-a">联系我们</a>
-				</li>
-				</ul>
-				<span>
-					<form action="index.action">
-						<button type="submit" class="btn btn-default" id="submit0">返回首页</button>
-					</form>
-				</span>
+
+<nav class="navbar navbar-dark fixed-top bg-dark flex-md-nowrap p-0 shadow">
+	<a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">Company name</a>
+
+	<a href="index" class="form-control form-control-dark w-100">首页</a>
+
+	<a href="http://www.takenedu.net/news.php"  class="form-control form-control-dark w-100" target="_blank">学习快讯</a>
+
+	<a href="${pageContext.request.contextPath}/playMedia"  class="form-control form-control-dark w-100">教学视频</a>
+
+	<a href="${pageContext.request.contextPath}/news1"  class="form-control form-control-dark w-100">课程介绍</a>
+
+	<a href="${pageContext.request.contextPath}/news2"  class="form-control form-control-dark w-100">课程内容</a>
+
+	<a href="${pageContext.request.contextPath}/news3"  class="form-control form-control-dark w-100">课程实践</a>
+
+	<a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
+
+	<a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
+
+	<a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
+
+	<a href="${pageContext.request.contextPath}/contactUs.jsp"  class="form-control form-control-dark w-100">联系我们</a>
+
+</nav>
+<br/><br/>
+
+<div class="container-fluid">
+	<div class="row">
+		<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+			<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+				<h1 class="h2">注册</h1>
 			</div>
-		</nav>
+			<p class="h1">欢迎注册！</p>
+			<form autocomplete="off" name="form">
+				<div class="form-group row">
+					<label for="shool" class="col-sm-2 col-from-label">学校</label>
+					<div class="col-sm-8">
+						<select  id="shool" name="shool" class="form-control">
+							<option value="合肥工业大学">合肥工业大学</option>
+							<option value="中国科技大学">中国科技大学</option>
+							<option value="安徽大学">安徽大学</option>
+						</select>
+					</div>
+					<!--				<span id="span0"></span>-->
+				</div>
+				<div class="form-group row">
+					<label for="no" class="col-sm-2 col-from-label">教师号/学号</label>
+					<div class="col-sm-8">
+						<input type="text" name="no" id="no" class="form-control required" placeholder="教师号/学号">
+					</div>
+					<span id="span1"></span>
+
+				</div>
+				<div class="form-group row">
+					<label for="name" class="col-sm-2 col-from-label">用户名</label>
+					<div class="col-sm-8">
+						<input type="text" name="name" id="name" placeholder="用户名" class="form-control required ">
+					</div>
+					<span id="span2"></span>
+				</div>
+				<div class="form-group row">
+					<label for="password" class="col-sm-2 col-from-label">密码</label>
+					<div class="col-sm-8">
+						<input type="password" name="password" id="password" placeholder="密码" class="form-control required ">
+					</div>
+					<span id="span3"></span>
+				</div>
+				<div class="form-group row">
+					<label for="sure" class="col-sm-2 col-from-label">确认密码</label>
+					<div class="col-sm-8">
+						<input type="password" id="sure" placeholder="确认密码" class="form-control required ">
+					</div>
+					<span id="span4"></span>
+				</div>
+				<div class="form-group row">
+					<label for="email" class="col-sm-2 col-from-label">电子邮箱</label>
+					<div class="col-sm-8">
+						<input type="email" name="email" id="email" placeholder="电子邮箱" class="form-control required ">
+					</div>
+					<span id="span5"></span>
+
+
+				</div>
+
+				<div class="form-group row">
+					<label  class="col-sm-2"></label>
+					<div class="col-sm-8">
+						<input type="radio" name="flag" value="1" checked="checked">教师
+						<input type="radio" name="flag" value="2">学生
+					</div>
+				</div>
+				<div class="form-group row">
+					<button type="button" class="btn btn-outline-dark btn-block" id="enroll">注册</button>
+				</div>
+			</form>
+			<p><a href="index.html">已有账号，去登陆！</a></p>
+			<canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+		</main>
+
 	</div>
-	<div class="containt">
+</div>
+	<!--<div class="containt">
 		<p class="h1">欢迎注册！</p>
 		<form autocomplete="off" name="form">
 			<div class="form-group row">
@@ -72,7 +147,7 @@
 						<option value="安徽大学">安徽大学</option>
 					</select>
 				</div>
-<!--				<span id="span0"></span>-->
+&lt;!&ndash;				<span id="span0"></span>&ndash;&gt;
 			</div>
 			<div class="form-group row">
 				<label for="no" class="col-sm-2 col-from-label">教师号/学号</label>
@@ -80,7 +155,7 @@
 					<input type="text" name="no" id="no" class="form-control required" placeholder="教师号/学号">
 				</div>
 				<span id="span1"></span>
-				
+
 			</div>
 			<div class="form-group row">
 				<label for="name" class="col-sm-2 col-from-label">用户名</label>
@@ -125,7 +200,7 @@
 			</div>
 		</form>
 		<p><a href="index.html">已有账号，去登陆！</a></p>
-	</div>
+	</div>-->
 	<!--<div class="footer" >
 		<p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
 	</div>-->
