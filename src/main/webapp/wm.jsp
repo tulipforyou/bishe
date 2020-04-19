@@ -104,156 +104,241 @@
 
 </nav>
 <br/><br/>
-
-<div class="container-fluid">
-    <div class="row">
-        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
-            <div class="sidebar-sticky">
-                <ul class="nav flex-column">
-                    <li class="nav-item">
-                        <a class="nav-link active" href="course">
-                            <span data-feather="home"></span>
-                            学生选课 <span class="sr-only">(current)</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="choose">
-                            <span data-feather="file"></span>
-                            课程及成绩查看
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="playMedia">
-                            <span data-feather="shopping-cart"></span>
-                            查看课程视频
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="doExercise">
-                            <span data-feather="users"></span>
-                            做习题
-                        </a>
-                    </li>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link" href="grade3">--%>
-<%--                            <span data-feather="bar-chart-2"></span>--%>
-<%--                            成绩分析--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
-<%--                    <li class="nav-item">--%>
-<%--                        <a class="nav-link" href="grade4">--%>
-<%--                            <span data-feather="layers"></span>--%>
-<%--                            成绩预警--%>
-<%--                        </a>--%>
-<%--                    </li>--%>
-                    <li class="nav-item">
-                        <a class="nav-link" href="showMyExercises">
-                            <span data-feather="layers"></span>
-                            已做习题回顾
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="showNews">
-                            <span data-feather="layers"></span>
-                            校內快訊
-                        </a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
-
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">认知诊断</h1>
-            </div>
-            <div class="container-fluid" style="background-color: #20c997">
-                <div class="row">
-                    <div class="col">
+<c:if test="${empty hasLogin}">
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <h1 style="text-align: center;color: #b21f2d">请返回首页登录使用</h1>
+    <h1 style="text-align: center;color: #b21f2d"><a href="index">确定</a> </h1>
+</c:if>
+<c:if test="${not empty hasLogin}">
+    <div class="container-fluid">
+        <div class="row">
+            <c:if test="${not empty hasLogin && userType=='1'}">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link" href="grade1">
+                                    <span data-feather="home"></span>
+                                    选课管理 <span class="sr-only"></span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="grade2">
+                                    <span data-feather="file"></span>
+                                    成绩导入
+                                </a>
+                            </li>
+                                <%-- <li class="nav-item">
+                                     <a class="nav-link" href="grade3">
+                                         <span data-feather="shopping-cart"></span>
+                                         成绩分析
+                                     </a>
+                                 </li>
+                                 <li class="nav-item">
+                                     <a class="nav-link" href="grade4">
+                                         <span data-feather="users"></span>
+                                         成绩预警
+                                     </a>
+                                 </li>--%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="addMedia.html">
+                                    <span data-feather="bar-chart-2"></span>
+                                    课程上传
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="teacherUploadExercise.jsp">
+                                    <span data-feather="layers"></span>
+                                    习题上传
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="playMedia">
+                                    <span data-feather="layers"></span>
+                                    查看课程视频
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="managerExercise">
+                                    <span data-feather="layers"></span>
+                                    管理习题
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="lookStudentAnswers">
+                                    <span data-feather="layers"></span>
+                                    学生已做习题查看
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="showNews">
+                                    <span data-feather="layers"></span>
+                                    校內快訊
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="addNews.jsp">
+                                    <span data-feather="layers"></span>
+                                    信息管理
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <div class="col-6">
-                        <h1 style="text-align: center">知識點掌握概況</h1>
-                    </div>
-                    <div class="col">
-                        <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">
-                            <input type="file" class="btn btn-outline-success" name="upload">
-                            <input type="submit" class="btn btn-outline-primary" value="成績分析"/>
-                        </form>
-                    </div>
-                </div>
-            </div>
-
-
-
-            <c:if test="${empty resultMap}">
-                <div class="container-fluid" style="background-color: #9fcdff">
-                    <div class="row">
-                        <div class="col align-items-start">
-                            <br/><br/><br/><br/><br/><br/><br/><br/>
-                            <br/><br/>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col align-items-center" style="text-align: center">
-                            <img src="images/dd.jpg" style="width: 1100px;height: 200px;" alt="sch">
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col align-items-end">
-                            <br/><br/><br/><br/><br/><br/><br/><br/>
-                            <br/><br/><br/><br/><br/><br/>
-                        </div>
-                    </div>
-                </div>
-
+                </nav>
             </c:if>
-            <c:if test="${!empty resultMap}">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <table class="table table-hover">
-                                <thead>
-                                <tr>
-                                    <th scope="col">學生姓名</th>
-                                    <th scope="col">知識點1</th>
-                                    <th scope="col">知識點2</th>
-                                    <th scope="col">知識點3</th>
-                                    <th scope="col">知識點4</th>
-                                    <th scope="col">知識點5</th>
-                                    <th scope="col">知識點6</th>
-                                    <th scope="col">知識點7</th>
-                                    <th scope="col">知識點8</th>
-                                    <th scope="col">知識點9</th>
-                                </tr>
-                                </thead>
+            <c:if test="${not empty hasLogin && userType=='2'}">
+                <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                    <div class="sidebar-sticky">
+                        <ul class="nav flex-column">
+                            <li class="nav-item">
+                                <a class="nav-link active" href="course">
+                                    <span data-feather="home"></span>
+                                    学生选课 <span class="sr-only">(current)</span>
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="choose">
+                                    <span data-feather="file"></span>
+                                    课程及成绩查看
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="playMedia">
+                                    <span data-feather="shopping-cart"></span>
+                                    查看课程视频
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="doExercise">
+                                    <span data-feather="users"></span>
+                                    做习题
+                                </a>
+                            </li>
+                                <%--                    <li class="nav-item">--%>
+                                <%--                        <a class="nav-link" href="grade3">--%>
+                                <%--                            <span data-feather="bar-chart-2"></span>--%>
+                                <%--                            成绩分析--%>
+                                <%--                        </a>--%>
+                                <%--                    </li>--%>
+                                <%--                    <li class="nav-item">--%>
+                                <%--                        <a class="nav-link" href="grade4">--%>
+                                <%--                            <span data-feather="layers"></span>--%>
+                                <%--                            成绩预警--%>
+                                <%--                        </a>--%>
+                                <%--                    </li>--%>
+                            <li class="nav-item">
+                                <a class="nav-link" href="showMyExercises">
+                                    <span data-feather="layers"></span>
+                                    已做习题回顾
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="showNews">
+                                    <span data-feather="layers"></span>
+                                    校內快訊
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </c:if>
 
-                                <tbody>
-                                <c:forEach items="${resultMap}" var="map">
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">认知诊断</h1>
+                </div>
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col">
+                        </div>
+                        <div class="col-6">
+                            <h1 style="text-align: center">知识点掌握概况</h1>
+                        </div>
+                        <div class="col">
+                            <form id="fileUpload1" method="post" action="wm_upload" enctype="multipart/form-data">
+                                <input type="file" class="btn btn-outline-success" name="upload">
+                                <input type="submit" class="btn btn-outline-primary" value="成績分析"/>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <c:if test="${empty resultMap}">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col align-items-start">
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <br/><br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-items-center" style="text-align: center">
+                                <img src="images/dd.jpg" style="width: 1100px;height: 200px;" alt="sch">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-items-end">
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <br/><br/><br/><br/><br/><br/>
+                            </div>
+                        </div>
+                    </div>
+
+                </c:if>
+                <c:if test="${!empty resultMap}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-hover">
+                                    <thead>
                                     <tr>
-                                        <th scope="row">學生_${map.key}</th>
-                                        <c:forEach items="${map.value}" var="list">
-                                            <c:choose>
-                                                <c:when test="${list eq '1'}">
-                                                    <th scope="row" style="background-color: #34ce57;text-align: center">${list}</th>
-                                                </c:when>
-                                                <c:otherwise>
-                                                    <th scope="row" style="background-color: #b21f2d;text-align: center">${list}</th>
-                                                </c:otherwise>
-                                            </c:choose>
-                                        </c:forEach>
+                                        <th scope="col">學生姓名</th>
+                                        <th scope="col">知識點1</th>
+                                        <th scope="col">知識點2</th>
+                                        <th scope="col">知識點3</th>
+                                        <th scope="col">知識點4</th>
+                                        <th scope="col">知識點5</th>
+                                        <th scope="col">知識點6</th>
+                                        <th scope="col">知識點7</th>
+                                        <th scope="col">知識點8</th>
+                                        <th scope="col">知識點9</th>
                                     </tr>
-                                </c:forEach>
+                                    </thead>
 
-                                </tbody>
-                            </table>
+                                    <tbody>
+                                    <c:forEach items="${resultMap}" var="map">
+                                        <tr>
+                                            <th scope="row">學生_${map.key}</th>
+                                            <c:forEach items="${map.value}" var="list">
+                                                <c:choose>
+                                                    <c:when test="${list eq '1'}">
+                                                        <th scope="row" style="background-color: #34ce57;text-align: center">${list}</th>
+                                                    </c:when>
+                                                    <c:otherwise>
+                                                        <th scope="row" style="background-color: #b21f2d;text-align: center">${list}</th>
+                                                    </c:otherwise>
+                                                </c:choose>
+                                            </c:forEach>
+                                        </tr>
+                                    </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
-            </c:if>
-            <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
-        </main>
+                </c:if>
+                <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
+            </main>
 
+        </div>
     </div>
-</div>
+</c:if>
+
 
 <%--<div class="container-fluid" style="background-color: #20c997">
     <div class="row">

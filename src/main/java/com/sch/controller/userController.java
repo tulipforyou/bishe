@@ -4,7 +4,6 @@ import java.io.*;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,6 @@ import com.sch.service.userServiceImpl;
 import net.sf.json.JSONObject;
 import org.springframework.web.bind.support.SessionStatus;
 import org.springframework.web.multipart.MultipartFile;
-import sun.security.x509.GeneralName;
 
 
 /**
@@ -100,7 +98,7 @@ public class userController {
 	@RequestMapping(path = "/wm_upload")
 	public String fileUpload1(HttpServletRequest request, MultipartFile upload,Model model){
 		//创建上传文件保存目录
-		String path=request.getSession().getServletContext().getRealPath("/uploads/");
+		String path=request.getSession().getServletContext().getRealPath("/upload/");
 		File file=new File(path);
 		if(!file.exists()){
 			boolean success=file.mkdirs();
@@ -161,7 +159,7 @@ public class userController {
 	@RequestMapping(path = "/yhc_upload")
 	public String fileUpload2(HttpServletRequest request, MultipartFile upload,Model model){
 		//创建上传文件保存目录
-		String path=request.getSession().getServletContext().getRealPath("/uploads/");
+		String path=request.getSession().getServletContext().getRealPath("/upload/");
 		File file=new File(path);
 		if(!file.exists()){
 			boolean success=file.mkdirs();
@@ -214,6 +212,14 @@ public class userController {
 
 		model.addAttribute("resultMap",map);
 		return "yhc";
+	}
+
+	/**
+	 * intelligentAnalysis ：认知诊断部分展示
+	 */
+	@RequestMapping(path = "intelligentAnalysis")
+	public String intelligentAnalysis(){
+		return "wm";
 	}
 
 }

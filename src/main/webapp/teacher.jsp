@@ -87,8 +87,17 @@
 </nav>
 <br/><br/>
 
-<div class="container-fluid">
+<c:if test="${empty hasLogin}">
+    <br/><br/>
+    <br/><br/>
+    <br/><br/>
+    <h1 style="text-align: center;color: #b21f2d">请返回首页登录使用</h1>
+    <h1 style="text-align: center;color: #b21f2d"><a href="index">确定</a> </h1>
+</c:if>
+<c:if test="${not empty hasLogin}">
+    <div class="container-fluid">
     <div class="row">
+    <c:if test="${not empty hasLogin && userType=='1'}">
         <nav class="col-md-2 d-none d-md-block bg-light sidebar">
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
@@ -104,18 +113,18 @@
                             成绩导入
                         </a>
                     </li>
-                   <%-- <li class="nav-item">
-                        <a class="nav-link" href="grade3">
-                            <span data-feather="shopping-cart"></span>
-                            成绩分析
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="grade4">
-                            <span data-feather="users"></span>
-                            成绩预警
-                        </a>
-                    </li>--%>
+                        <%-- <li class="nav-item">
+                             <a class="nav-link" href="grade3">
+                                 <span data-feather="shopping-cart"></span>
+                                 成绩分析
+                             </a>
+                         </li>
+                         <li class="nav-item">
+                             <a class="nav-link" href="grade4">
+                                 <span data-feather="users"></span>
+                                 成绩预警
+                             </a>
+                         </li>--%>
                     <li class="nav-item">
                         <a class="nav-link" href="addMedia.html">
                             <span data-feather="bar-chart-2"></span>
@@ -161,6 +170,63 @@
                 </ul>
             </div>
         </nav>
+    </c:if>
+    <c:if test="${not empty hasLogin && userType=='2'}">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+            <div class="sidebar-sticky">
+                <ul class="nav flex-column">
+                    <li class="nav-item">
+                        <a class="nav-link active" href="course">
+                            <span data-feather="home"></span>
+                            学生选课 <span class="sr-only">(current)</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="choose">
+                            <span data-feather="file"></span>
+                            课程及成绩查看
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="playMedia">
+                            <span data-feather="shopping-cart"></span>
+                            查看课程视频
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="doExercise">
+                            <span data-feather="users"></span>
+                            做习题
+                        </a>
+                    </li>
+                        <%--                    <li class="nav-item">--%>
+                        <%--                        <a class="nav-link" href="grade3">--%>
+                        <%--                            <span data-feather="bar-chart-2"></span>--%>
+                        <%--                            成绩分析--%>
+                        <%--                        </a>--%>
+                        <%--                    </li>--%>
+                        <%--                    <li class="nav-item">--%>
+                        <%--                        <a class="nav-link" href="grade4">--%>
+                        <%--                            <span data-feather="layers"></span>--%>
+                        <%--                            成绩预警--%>
+                        <%--                        </a>--%>
+                        <%--                    </li>--%>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showMyExercises">
+                            <span data-feather="layers"></span>
+                            已做习题回顾
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="showNews">
+                            <span data-feather="layers"></span>
+                            校內快訊
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </c:if>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">老师页</h1>
@@ -170,5 +236,6 @@
         </main>
     </div>
 </div>
+</c:if>
 </body>
 </html>
