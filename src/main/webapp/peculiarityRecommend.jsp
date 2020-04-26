@@ -1,34 +1,24 @@
 <%--
   Created by IntelliJ IDEA.
-  User: sch
-  Date: 2020/4/8
-  Time: 下午3:49
+  User: 25243
+  Date: 2020/3/9
+  Time: 19:13
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" isELIgnored="false" %>
+         pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="baseUri" value="${pageContext.request.contextPath }" scope="request"/>
 <html>
 <head>
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- 上述3个meta标签*必须*放在最前面，任何其他内容都*必须*跟随其后！ -->
-    <title>认知跟踪</title>
-    <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <%-- <link rel="stylesheet" href="css/bootstrap.min.css">
+     <link rel="stylesheet" href="css/choose_.css">--%>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>个性推送</title>
+    <link rel="canonical" href="https://v4.bootcss.com/docs/examples/dashboard/">
 
-    <!-- HTML5 shim 和 Respond.js 是为了让 IE8 支持 HTML5 元素和媒体查询（media queries）功能 -->
-    <!-- 警告：通过 file:// 协议（就是直接将 html 页面拖拽到浏览器中）访问页面时 Respond.js 不起作用 -->
-    <!--[if lt IE 9]>
-
-    <![endif]-->
-
-    <!-- jQuery (Bootstrap 的所有 JavaScript 插件都依赖 jQuery，所以必须放在前边) -->
-
-    <!-- 加载 Bootstrap 的所有 JavaScript 插件。你也可以根据需要只加载单个插件。 -->
-    <script src="js/bootstrap.min.js" type="text/javascript"></script>
+    <!-- Bootstrap core CSS -->
     <link href="bs4/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <!-- Favicons -->
@@ -103,6 +93,7 @@
 
 </nav>
 <br/><br/>
+
 <c:if test="${empty hasLogin}">
     <br/><br/>
     <br/><br/>
@@ -246,46 +237,104 @@
 
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
                 <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                    <h1 class="h2">认知跟踪</h1>
-                    <form id="fileUpload1" method="post" action="yhc_upload" enctype="multipart/form-data">
-                        <input type="file" class="btn btn-outline-success" name="upload">
-                        <input type="submit" class="btn btn-outline-primary" value="成绩分析"/>
-                    </form>
+                    <h1 class="h2">个性推送</h1>
                 </div>
-                <div class="header" style="background-color: #20c997">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="nav nav-tabs">
-<%--                                <li class="nav-item">--%>
-<%--                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">知识点掌握情况</a>--%>
-<%--                                </li>--%>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="yhc1.jsp" style="color: #062c33">正确率预测</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="yhc2.jsp" style="color: #062c33">相关习题推送</a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
-
-                            <h1>正确率预测</h1>
-
-                        </div>
-                    </div>
-                </div>
+                <form action="checkAnswer" method="post">
+                    <table class="table table-hover">
+                        <thead class="thead-dark fixedHeader">
+                        <tr>
+                            <th scope="col">习题编号</th>
+                            <th scope="col">课程名称</th>
+                            <th scope="col">习题类型</th>
+                            <th scope="col">涉及知识点</th>
+                            <th scope="col">题目</th>
+                            <th scope="col">选项一</th>
+                            <th scope="col">选项二</th>
+                            <th scope="col">选项三</th>
+                            <th scope="col">选项四</th>
+                            <th scope="col">正确答案</th>
+                        </tr>
+                        </thead>
+                        <tbody id="tbodyId">
+                        <c:forEach var="row" items="${exercises}">
+                            <tr scope="row">
+                                <c:forEach var="list" items="${row.value}">
+                                    <th scope="col">${list.id}</th>
+                                    <th scope="col">${list.className}</th>
+                                    <th scope="col">${list.exerciseType}</th>
+                                    <th scope="col">${list.knowledgePoints}</th>
+                                    <th scope="col">${list.subject}</th>
+                                    <th scope="col">${list.answer1}</th>
+                                    <th scope="col">${list.answer2}</th>
+                                    <th scope="col">${list.answer3}</th>
+                                    <th scope="col">${list.answer4}</th>
+                                    <th scope="col">${list.correctAnswer}</th>
+                                </c:forEach>
+                            </tr>
+                        </c:forEach>
+                        </tbody>
+                    </table>
+                </form>
                 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
             </main>
-
         </div>
     </div>
+
+    <%--<div class="containt">
+        <table class="table table-hover">
+            <thead class="thead-dark fixedHeader">
+            <tr>
+                <th scope="col">选择提交</th>
+                <th scope="col">习题编号</th>
+                <th scope="col">课程名称</th>
+                <th scope="col">习题类型</th>
+                <th scope="col">涉及知识点</th>
+                <th scope="col">题目</th>
+                <th scope="col">选项一</th>
+                <th scope="col">选项二</th>
+                <th scope="col">选项三</th>
+                <th scope="col">选项四</th>
+                <th scope="col">正确答案</th>
+            </tr>
+            </thead>
+        </table>
+        <form action="checkAnswer" method="post">
+            <table class="table table-hover">
+                <tbody id="tbodyId">
+                <c:forEach var="row" items="${allExercise}">
+                    <tr scope="row ">
+                        <td>
+                            <label>
+                                <input type="checkbox" class="checkbox" value="${row.id }" id="checkbox" name="checkbox" style="zoom:200%"/>
+                                <span class="lbl"></span>
+                            </label>
+                        </td>
+                        <td id="no">${row.id}</td>
+                        <td>${row.className}</td>
+                        <td>${row.exerciseType}</td>
+                        <td>${row.knowledgePoints}</td>
+                        <td>${row.subject}</td>
+                        <td>${row.answer1}</td>
+                        <td>${row.answer2}</td>
+                        <td>${row.answer3}</td>
+                        <td>${row.answer4}</td>
+                        <td id="sa">
+                            <label title="请填写答案:">
+                                <input type="text" name="studentAnswer">
+                            </label>
+                        </td>
+                    </tr>
+                </c:forEach>
+                <input type="submit" value="提交" class=" btn btn-secondary">
+                </tbody>
+            </table>
+        </form>
+    </div>
+    &lt;%&ndash;<div class="footer" >
+        <p>适用浏览器：IE8、360、FireFox、Chrome、Safari、Opera、傲游、搜狗、世界之窗.</p>
+    </div>&ndash;%&gt;
+    <script type="text/javascript" src="js/jquery.min.js"></script>--%>
+    <%--<script type="text/javascript" src="js/studentAnswer.js"></script>--%>
 </c:if>
-
-
 </body>
 </html>

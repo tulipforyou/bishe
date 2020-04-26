@@ -75,7 +75,8 @@
     <a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
 
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
-    <a href="${pageContext.request.contextPath}/yhc.jsp"
+    <a href="${pageContext.request.contextPath}/yhc.jsp"  class="form-control form-control-dark w-100">智能预测</a>
+    <a href="${pageContext.request.contextPath}/peculiarityRecommend"
        class="form-control form-control-dark w-100">个性推荐</a>
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
 
@@ -255,11 +256,11 @@
                     <div class="row">
                         <div class="col-md-12">
                             <ul class="nav nav-tabs">
+<%--                                <li class="nav-item">--%>
+<%--                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">知识点掌握情况</a>--%>
+<%--                                </li>--%>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">知识点掌握情况</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="yhc1.jsp" style="color: #062c33">正确率预测</a>
+                                    <a class="nav-link" href="yhc.jsp" style="color: #062c33">正确率预测</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link active" href="yhc2.jsp" style="color: #062c33">相关习题推送</a>

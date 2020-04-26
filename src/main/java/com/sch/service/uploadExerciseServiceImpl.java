@@ -48,4 +48,14 @@ public class uploadExerciseServiceImpl implements uploadExerciseService {
     public void updateStudentAnswerCheck(Integer integer, String answerMessage,int sId,String studentAnswer) {
         dao.updateStudentAnswerCheck(integer,answerMessage,sId,studentAnswer);
     }
+
+    @Override
+    public List<uploadExercise> peculiarityRecommendByUserId(Integer userId) {
+        return dao.peculiarityRecommendByUserId(userId);
+    }
+
+    @Override
+    public List<uploadExercise> findExerciseByType(String key) {
+        return dao.findExerciseByType(key);
+    }
 }

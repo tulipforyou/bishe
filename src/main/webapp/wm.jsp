@@ -77,7 +77,8 @@
     <a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
 
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
-    <a href="${pageContext.request.contextPath}/yhc.jsp"
+    <a href="${pageContext.request.contextPath}/yhc.jsp"  class="form-control form-control-dark w-100">智能预测</a>
+    <a href="${pageContext.request.contextPath}/peculiarityRecommend"
        class="form-control form-control-dark w-100">个性推荐</a>
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
 
@@ -294,29 +295,29 @@
 
                 </c:if>
                 <c:if test="${!empty resultMap}">
-                    <div class="container">
+                    <div class="container-fluid">
                         <div class="row">
                             <div class="col-md-12">
                                 <table class="table table-hover">
                                     <thead>
                                     <tr>
-                                        <th scope="col">學生姓名</th>
-                                        <th scope="col">知識點1</th>
-                                        <th scope="col">知識點2</th>
-                                        <th scope="col">知識點3</th>
-                                        <th scope="col">知識點4</th>
-                                        <th scope="col">知識點5</th>
-                                        <th scope="col">知識點6</th>
-                                        <th scope="col">知識點7</th>
-                                        <th scope="col">知識點8</th>
-                                        <th scope="col">知識點9</th>
+                                        <th scope="col">学生姓名</th>
+                                        <th scope="col">知识点1</th>
+                                        <th scope="col">知识点2</th>
+                                        <th scope="col">知识点3</th>
+                                        <th scope="col">知识点4</th>
+                                        <th scope="col">知识点5</th>
+                                        <th scope="col">知识点6</th>
+                                        <th scope="col">知识点7</th>
+                                        <th scope="col">知识点8</th>
+                                        <th scope="col">知识点9</th>
                                     </tr>
                                     </thead>
 
                                     <tbody>
                                     <c:forEach items="${resultMap}" var="map">
                                         <tr>
-                                            <th scope="row">學生_${map.key}</th>
+                                            <th scope="row">学生_${map.key}</th>
                                             <c:forEach items="${map.value}" var="list">
                                                 <c:choose>
                                                     <c:when test="${list eq '1'}">

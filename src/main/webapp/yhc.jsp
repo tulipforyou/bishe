@@ -9,6 +9,7 @@
          pageEncoding="UTF-8" isELIgnored="false" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="baseUri" value="${pageContext.request.contextPath }" scope="request"/>
 <html>
 <head>
@@ -75,7 +76,10 @@
     <a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
 
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
-    <a href="${pageContext.request.contextPath}/yhc.jsp"
+
+    <a href="${pageContext.request.contextPath}/yhc.jsp"  class="form-control form-control-dark w-100">智能预测</a>
+
+    <a href="${pageContext.request.contextPath}/peculiarityRecommend"
        class="form-control form-control-dark w-100">个性推荐</a>
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
 
@@ -251,33 +255,71 @@
                         <input type="submit" class="btn btn-outline-primary" value="成绩分析"/>
                     </form>
                 </div>
-                <div class="header" style="background-color: #20c997">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <ul class="nav nav-tabs">
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="yhc.jsp" style="color: #062c33">知识点掌握情况</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="yhc1.jsp" style="color: #062c33">正确率预测</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="yhc2.jsp" style="color: #062c33">相关习题推送</a>
-                                </li>
-                            </ul>
+
+                <c:if test="${empty resultMap}">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col align-items-start">
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <br/><br/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-items-center" style="text-align: center">
+                                <img src="images/dd.jpg" style="width: 1100px;height: 200px;" alt="sch">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col align-items-end">
+                                <br/><br/><br/><br/><br/><br/><br/><br/>
+                                <br/><br/><br/><br/><br/><br/>
+                            </div>
                         </div>
                     </div>
-                </div>
 
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-12">
+                </c:if>
+                <c:if test="${!empty resultMap}">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <table class="table table-hover" style="text-align: center">
+                                    <thead>
+                                    <tr>
+                                        <td>预测次数</td>
+                                        <td>正确概率</td>
+                                        <td>错误概率</td>
+                                    </tr>
+                                    </thead>
 
-                            <h1>知识点掌握情况</h1>
+                                    <tbody>
+                                    <c:forEach items="${resultMap}" var="map">
+                                        <tr>
+                                            <c:choose>
+                                                <c:when test="${map.key eq '0'}">
+                                                    <th scope="row" style="background-color: #20c997">第 ${map.key} 次</th>
+                                                    <c:forEach items="${map.value}" var="list">
+                                                        <th scope="row" style="background-color: #20c997"><fmt:formatNumber value="${list.value}" pattern="0.0000" type="percent"/></th>
+                                                    </c:forEach>
+                                                </c:when>
+                                                <c:otherwise>
+                                                    <th scope="row">第 ${map.key} 次</th>
+                                                    <c:forEach items="${map.value}" var="list">
+                                                        <th scope="row"><fmt:formatNumber value="${list.value}" pattern="0.0000" type="percent"/></th>
+                                                    </c:forEach>
+                                                </c:otherwise>
+                                            </c:choose>
 
+
+                                        </tr>
+                                    </c:forEach>
+
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </c:if>
+
                 <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
             </main>
 

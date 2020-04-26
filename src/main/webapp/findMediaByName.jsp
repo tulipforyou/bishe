@@ -66,7 +66,8 @@
 
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"
        class="form-control form-control-dark w-100">智能分析</a>
-    <a href="${pageContext.request.contextPath}/yhc.jsp"
+    <a href="${pageContext.request.contextPath}/yhc.jsp"  class="form-control form-control-dark w-100">智能预测</a>
+    <a href="${pageContext.request.contextPath}/peculiarityRecommend"
        class="form-control form-control-dark w-100">个性推荐</a>
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"
        class="form-control form-control-dark w-100">课程图谱</a>
@@ -151,6 +152,7 @@
                         </div>
                     </div>
                 </div>
+                <br/>
             </c:forEach>
         </div>
     </div>

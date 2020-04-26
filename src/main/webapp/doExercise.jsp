@@ -65,7 +65,8 @@
     <a href="${pageContext.request.contextPath}/news4"  class="form-control form-control-dark w-100">教学团队</a>
 
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">智能分析</a>
-    <a href="${pageContext.request.contextPath}/yhc.jsp"
+    <a href="${pageContext.request.contextPath}/yhc.jsp"  class="form-control form-control-dark w-100">智能预测</a>
+    <a href="${pageContext.request.contextPath}/peculiarityRecommend"
        class="form-control form-control-dark w-100">个性推荐</a>
     <a href="${pageContext.request.contextPath}/intelligentAnalysis"  class="form-control form-control-dark w-100">课程图谱</a>
 
@@ -237,25 +238,40 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">做练习</h1>
             </div>
-            <table class="table table-hover">
-                <thead class="thead-dark fixedHeader">
-                <tr>
-                    <th scope="col">选择提交</th>
-                    <th scope="col">习题编号</th>
-                    <th scope="col">课程名称</th>
-                    <th scope="col">习题类型</th>
-                    <th scope="col">涉及知识点</th>
-                    <th scope="col">题目</th>
-                    <th scope="col">选项一</th>
-                    <th scope="col">选项二</th>
-                    <th scope="col">选项三</th>
-                    <th scope="col">选项四</th>
-                    <th scope="col">正确答案</th>
-                </tr>
-                </thead>
-            </table>
+<%--            <table class="table table-hover">--%>
+<%--                <thead class="thead-dark fixedHeader">--%>
+<%--                <tr>--%>
+<%--                    <th scope="col">选择提交</th>--%>
+<%--                    <th scope="col">习题编号</th>--%>
+<%--                    <th scope="col">课程名称</th>--%>
+<%--                    <th scope="col">习题类型</th>--%>
+<%--                    <th scope="col">涉及知识点</th>--%>
+<%--                    <th scope="col">题目</th>--%>
+<%--                    <th scope="col">选项一</th>--%>
+<%--                    <th scope="col">选项二</th>--%>
+<%--                    <th scope="col">选项三</th>--%>
+<%--                    <th scope="col">选项四</th>--%>
+<%--                    <th scope="col">正确答案</th>--%>
+<%--                </tr>--%>
+<%--                </thead>--%>
+<%--            </table>--%>
             <form action="checkAnswer" method="post">
                 <table class="table table-hover">
+                    <thead class="thead-dark fixedHeader">
+                    <tr>
+                        <th scope="col">选择提交</th>
+                        <th scope="col">习题编号</th>
+                        <th scope="col">课程名称</th>
+                        <th scope="col">习题类型</th>
+                        <th scope="col">涉及知识点</th>
+                        <th scope="col">题目</th>
+                        <th scope="col">选项一</th>
+                        <th scope="col">选项二</th>
+                        <th scope="col">选项三</th>
+                        <th scope="col">选项四</th>
+                        <th scope="col">正确答案</th>
+                    </tr>
+                    </thead>
                     <tbody id="tbodyId">
                     <c:forEach var="row" items="${allExercise}">
                         <tr scope="row ">

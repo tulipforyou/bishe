@@ -7,6 +7,7 @@
          uploadexercise(className, exerciseType, knowledgePoints, subject, answer1, answer2, answer3, answer4, correctAnswer, uptime)
          values (#{className},#{exerciseType},#{knowledgePoints},#{subject},#{answer1},#{answer2},#{answer3},#{answer4},#{correctAnswer},#{uptime})
     </insert>
+
     <select id="findAll" resultType="uploadExercise" parameterType="int">
         select * from uploadexercise where studentId=#{studentId};
     </select>
@@ -18,9 +19,19 @@
     <delete id="deleteById" parameterType="int">
         delete from uploadexercise where id=#{id};
     </delete>
+
     <select id="findAnswerById" parameterType="int" resultType="java.lang.String">
         select correctAnswer from uploadexercise where id=#{id};
     </select>
+
+    <select id="peculiarityRecommendByUserId" resultType="uploadExercise">
+        select * from uploadexercise where studentId=#{userId}
+    </select>
+
+    <select id="findExerciseByType" resultType="com.sch.model.uploadExercise" parameterType="string">
+        select * from uploadexercise where exerciseType=#{key}
+    </select>
+
     <update id="updateStudentAnswerCheck">
         update uploadexercise set studentAnswerCheck=#{msg},studentId=#{sId},studentAnswer=#{sa} where id=#{id};
     </update>

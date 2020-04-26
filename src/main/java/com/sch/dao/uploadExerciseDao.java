@@ -35,4 +35,8 @@ public interface uploadExerciseDao {
                                   @Param("msg") String answerMessage,
                                   @Param("sId") int sId,
                                   @Param("sa") String studentAnswer);
+
+    List<uploadExercise> peculiarityRecommendByUserId(Integer userId);
+
+    List<uploadExercise> findExerciseByType(String key);
 }

@@ -21,4 +21,8 @@ public interface uploadExerciseService {
     String findAnswerById(Integer integer);
 
     void updateStudentAnswerCheck(Integer integer, String answerMessage,int sId,String studentAnswer);
+
+    List<uploadExercise> peculiarityRecommendByUserId(Integer userId);
+
+    List<uploadExercise> findExerciseByType(String key);
 }
