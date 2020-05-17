@@ -132,7 +132,7 @@
                         <div class="sidebar-module sidebar-module-inset">
                             <h2>图片</h2>
                             <p class="lead blog-description">${row.head}</p>
-                            <img src="${baseUri}/upload/${row.img}" style="width: 600px;height:330px;" class="img-circle" alt="sss"/>
+                            <img src="${baseUri}/upload/${row.img}" style="width: 500px;height:280px;" class="img-circle" alt="sss"/>
                             <br/>
                         </div>
                     </div><!-- /.blog-sidebar -->

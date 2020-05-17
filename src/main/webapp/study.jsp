@@ -178,7 +178,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="course">
+                        <a class="nav-link" href="course">
                             <span data-feather="home"></span>
                             学生选课 <span class="sr-only">(current)</span>
                         </a>

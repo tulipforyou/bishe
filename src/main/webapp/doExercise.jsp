@@ -183,7 +183,7 @@
             <div class="sidebar-sticky">
                 <ul class="nav flex-column">
                     <li class="nav-item">
-                        <a class="nav-link active" href="course">
+                        <a class="nav-link" href="course">
                             <span data-feather="home"></span>
                             学生选课 <span class="sr-only">(current)</span>
                         </a>
@@ -201,7 +201,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="doExercise">
+                        <a class="nav-link active" href="doExercise">
                             <span data-feather="users"></span>
                             做习题
                         </a>
@@ -292,7 +292,7 @@
                             <td>${row.answer4}</td>
                             <td id="sa">
                                 <label title="请填写答案:">
-                                    <input type="text" name="studentAnswer">
+                                    <textarea type="text" name="studentAnswer"></textarea>
                                 </label>
                             </td>
                         </tr>

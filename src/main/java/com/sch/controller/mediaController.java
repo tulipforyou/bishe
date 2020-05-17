@@ -2,6 +2,7 @@ package com.sch.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 import javax.servlet.http.HttpServletRequest;
@@ -270,19 +271,19 @@ public class mediaController {
 	}
 
 	@RequestMapping(path = "/checkAnswer")
-	public ModelAndView checkAnswer(@RequestBody String studentAnswer,HttpServletRequest request) {
+	public ModelAndView checkAnswer(@RequestBody String studentAnswer,HttpServletRequest request) throws UnsupportedEncodingException {
 		Map<Integer,String> answers=new HashMap<>();
 
 		int studentId= Integer.parseInt((String) request.getSession().getAttribute("userId"));
 		System.out.println("学生ID============="+studentId);
 
-
 		String[] strings1 = studentAnswer.split("&");
 		List<String> strings=new ArrayList<>();
 		for (String string : strings1) {
 			if(!"studentAnswer=".equals(string)) {
-				System.out.println(string);
-				strings.add(string);
+				String str=new String(string.getBytes("ISO_8859_1"), StandardCharsets.UTF_8);
+				strings.add(str);
+				System.out.println("str= "+str);
 			}
 		}
 
@@ -302,7 +303,7 @@ public class mediaController {
 				key=Integer.parseInt(split1[1]);
 			}
 			if("studentAnswer".equals(split[0])){
-				value=split1[1];
+				value=split[1];
 			}
 			if("studentAnswer".equals(split1[0])){
 				value=split1[1];
@@ -311,10 +312,12 @@ public class mediaController {
 			answers.put(key,value);
 		}
 
+
 		for (Integer integer : answers.keySet()) {
 			System.out.println(integer+":"+answers.get(integer));
 			//正确答案
 			String correctAnswer=ues.findAnswerById(integer);
+
 			if(correctAnswer.equals(answers.get(integer))){
 				ues.updateStudentAnswerCheck(integer,"answerIsRight",studentId,answers.get(integer));
 			}else{
@@ -324,6 +327,9 @@ public class mediaController {
 		List<uploadExercise> checkAnswers=ues.findAll(studentId);
 
 		ModelAndView mav=new ModelAndView();
+
+		System.out.println("检查结果:"+checkAnswers);
+
 		mav.addObject("studentAnswersHasChecked",checkAnswers);
 		mav.setViewName("reviewMyAnswers");
 		return mav;
