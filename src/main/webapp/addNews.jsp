@@ -162,7 +162,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="addNews.jsp">
+                            <a class="nav-link active" href="addNews.jsp">
                                 <span data-feather="layers"></span>
                                 信息管理
                             </a>

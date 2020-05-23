@@ -149,7 +149,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="managerExercise">
+                        <a class="nav-link active" href="managerExercise">
                             <span data-feather="layers"></span>
                             管理习题
                         </a>

@@ -155,7 +155,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="lookStudentAnswers">
+                        <a class="nav-link active" href="lookStudentAnswers">
                             <span data-feather="layers"></span>
                             学生已做习题查看
                         </a>

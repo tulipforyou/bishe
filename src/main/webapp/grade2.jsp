@@ -107,7 +107,7 @@
 							</a>
 						</li>
 						<li class="nav-item">
-							<a class="nav-link" href="grade2">
+							<a class="nav-link active" href="grade2">
 								<span data-feather="file"></span>
 								成绩导入
 							</a>

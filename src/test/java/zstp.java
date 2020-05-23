@@ -11,15 +11,17 @@ import java.util.*;
 @project bs
 */
 public class zstp {
-   /* public Map<String, String> ZSTP() throws IOException {
+    public Map<String, String> ZSTP() throws IOException {
         BufferedReader bufferedReader=new BufferedReader(new FileReader(new File("data//dataStructure.txt")));
         String s=null;
         List<String> list=new ArrayList<>();
         Map<String,String> map=new LinkedHashMap<>();
         while((s=bufferedReader.readLine())!=null){
-            list.add(s);
+            list.add(s);  //读取每一行数据
         }
+
         map.put("title",list.get(0));
+
         for (int i=1;i<list.size();i++) {
             String head= list.get(i).split(" ")[0];
             StringBuilder body = new StringBuilder(" ");
@@ -40,11 +42,13 @@ public class zstp {
         }
 
         return map;
-    }*/
-
+    }
     @Test
-    public void test2(){
-        char aa='A';
-        System.out.println((char)(aa+1));
+    public void test() throws IOException {
+        Map<String, String> zstp = ZSTP();
+        Set<Map.Entry<String, String>> entries = zstp.entrySet();
+        for (Map.Entry<String, String> entry : entries) {
+            System.out.println(entry.getKey().length());
+        }
     }
 }

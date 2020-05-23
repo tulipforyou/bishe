@@ -284,4 +284,73 @@ public class userController {
 		mav.addObject("exercises",exercises);
 		return mav;
 	}
+
+	/**
+	 * 知识图谱展示
+	 */
+	@RequestMapping(path = "/zstp")
+	public String fileUpload3(HttpServletRequest request, MultipartFile upload,Model model) throws IOException {
+		//创建上传文件保存目录
+		String path=request.getSession().getServletContext().getRealPath("/upload/zstp/");
+		File file=new File(path);
+		if(!file.exists()){
+			boolean success=file.mkdirs();
+			if(!success) {
+				System.out.println("知识图谱文件夹创建失败");
+			}
+		}
+		//获取文件名字
+		String fileName=upload.getOriginalFilename();
+		if(fileName==null){
+			fileName="null.txt";
+		}
+		String uuid= UUID.randomUUID().toString().replace("-","");
+		fileName=uuid+fileName;
+		//上传文件
+		try {
+			//将文件上传到path
+			upload.transferTo(new File(path,fileName));
+		} catch (IOException e) {
+			System.out.println("知识图谱文件夹创建失败");
+		}
+		System.out.println("***********************************************************"+fileName);
+
+		BufferedReader bufferedReader = new BufferedReader(new FileReader(new File(path+fileName)));
+		String s=null;
+		List<String> list=new ArrayList<>();
+		Map<String,String> map=new LinkedHashMap<>();
+		while((s=bufferedReader.readLine())!=null){
+			list.add(s);  //读取每一行数据
+		}
+
+		map.put("title",list.get(0));
+
+		for (int i=1;i<list.size();i++) {
+			String head= list.get(i).split(" ")[0];
+			StringBuilder body = new StringBuilder(" ");
+			for(int j=1;j<list.get(i).split(" ").length;j++){
+				body.append(list.get(i).split(" ")[j]);
+				body.append(" ");
+			}
+			//对head进行去空格(全角和半角空格)
+			head = head.trim();
+			while (head.startsWith("　")) {
+				head = head.substring(1, head.length()).trim();
+			}
+			while (head.endsWith("　")) {
+				head = head.substring(0, head.length() - 1).trim();
+			}
+
+			map.put(head, body.toString());
+		}
+
+		model.addAttribute("zstp",map);
+
+//		Set<Map.Entry<String, String>> entries = map.entrySet();
+//		for (Map.Entry<String, String> entry : entries) {
+//			System.out.println(entry.getKey()+":"+entry.getValue());
+//		}
+
+		return "zstp";
+	}
 }

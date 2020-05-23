@@ -2,6 +2,7 @@ package com.sch.controller;
 
 import java.io.File;
 import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.alibaba.fastjson.JSON;
 import com.sch.model.*;
 import com.sch.service.*;
 import net.sf.json.JSONArray;
@@ -270,20 +272,20 @@ public class mediaController {
 		return mav;
 	}
 
-	@RequestMapping(path = "/checkAnswer")
+	@RequestMapping(path = "/checkAnswer",produces = "application/json;charset=utf-8")
 	public ModelAndView checkAnswer(@RequestBody String studentAnswer,HttpServletRequest request) throws UnsupportedEncodingException {
 		Map<Integer,String> answers=new HashMap<>();
+
+		String decode = URLDecoder.decode(studentAnswer, "UTF-8");
 
 		int studentId= Integer.parseInt((String) request.getSession().getAttribute("userId"));
 		System.out.println("学生ID============="+studentId);
 
-		String[] strings1 = studentAnswer.split("&");
+		String[] strings1 = decode.split("&");
 		List<String> strings=new ArrayList<>();
 		for (String string : strings1) {
 			if(!"studentAnswer=".equals(string)) {
-				String str=new String(string.getBytes("ISO_8859_1"), StandardCharsets.UTF_8);
-				strings.add(str);
-				System.out.println("str= "+str);
+				strings.add(string);
 			}
 		}
 

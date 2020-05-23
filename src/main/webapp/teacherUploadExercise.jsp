@@ -137,7 +137,7 @@
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="teacherUploadExercise.jsp">
+                        <a class="nav-link active" href="teacherUploadExercise.jsp">
                             <span data-feather="layers"></span>
                             习题上传
                         </a>
